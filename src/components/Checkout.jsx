@@ -43,10 +43,7 @@ export default function Checkout() {
           <span className="checkout-item">
             {' '}
             <span className=""> Price: </span>{' '}
-            <span className="bold">
-              {' '}
-              BDT {' ' + item.price * item.quantity}{' '}
-            </span>{' '}
+            <span className="bold"> ৳ {' ' + item.price * item.quantity} </span>{' '}
           </span>
         </div>
       ))}
@@ -82,10 +79,12 @@ export default function Checkout() {
             {' '}
             {' ' +
               '৳ ' +
-              cart.reduce(
-                (prevValue, item) => prevValue + item.price * item.quantity,
-                0
-              )}{' '}
+              cart
+                .reduce(
+                  (prevValue, item) => prevValue + item.price * item.quantity,
+                  0
+                )
+                .toFixed(2)}{' '}
           </span>{' '}
         </span>
       </div>
