@@ -55,7 +55,7 @@ function Cart() {
         </IconButton>
       </div> */}
       {!cart.length ? (
-        <p> Your cart is empty. Please choose an item and add it to cart :) </p>
+        <p>Your cart is empty. Please choose an item and add it to cart :) </p>
       ) : (
         ''
       )}
@@ -131,6 +131,7 @@ function Cart() {
           variant="contained"
           startIcon={<ShoppingCartCheckoutIcon />}
           onClick={handleCheckout}
+          disabled={!cart.length}
         >
           {' '}
           Confirm and Pay{' '}

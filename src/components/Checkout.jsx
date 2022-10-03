@@ -10,34 +10,85 @@ export default function Checkout() {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        marginTop: '20px',
+        paddingLeft: '20px',
+        paddingRight: '10px',
       }}
     >
       <h1 style={{ textAlign: 'center' }}> Review Items </h1>
 
-      {cart.map((item) => (
+      {cart.map((item, i) => (
         <div
           style={{
             display: 'flex',
             flexDirection: 'row',
             justifyContent: 'space-around',
             marginBottom: '10px',
+            alignItems: 'center',
+            border: '1px solid #e5e5e5',
           }}
         >
-          <img height="20px" width="20px" alt={item.image} src={item.image} />
+          <span> {i + 1}. </span>
+          <img
+            className="checkout-img scale"
+            alt={item.image}
+            src={item.image}
+          />
 
           {/* <span style={{ display: 'inline-block' }}> {item.title} </span> */}
-          <span>
+          <span className="checkout-item">
             {' '}
-            <span className="bold"> Quantity: </span> {item.quantity}{' '}
+            <span className=""> Qty: </span>{' '}
+            <span className="bold"> {item.quantity} </span>
           </span>
-          <span>
+          <span className="checkout-item">
             {' '}
-            <span className="bold"> Price: </span> BDT{' '}
-            {item.price * item.quantity}{' '}
+            <span className=""> Price: </span>{' '}
+            <span className="bold">
+              {' '}
+              BDT {' ' + item.price * item.quantity}{' '}
+            </span>{' '}
           </span>
         </div>
       ))}
+
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-around',
+          marginBottom: '10px',
+          alignItems: 'center',
+        }}
+      >
+        <span> </span>
+        <img alt="" />
+
+        <span className="checkout-item">
+          {' '}
+          <span className=""> </span> <span className="bold"> </span>
+        </span>
+        <span className="checkout-item">
+          {' '}
+          <span className="">
+            {' '}
+            Subtotal (
+            {cart.reduce(
+              (prevValue, item) => prevValue + item.quantity,
+              0
+            )}{' '}
+            items):{' '}
+          </span>{' '}
+          <span className="bold">
+            {' '}
+            {' ' +
+              ' ' +
+              cart.reduce(
+                (prevValue, item) => prevValue + item.price * item.quantity,
+                0
+              )}{' '}
+          </span>{' '}
+        </span>
+      </div>
     </div>
   );
 }

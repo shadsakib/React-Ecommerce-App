@@ -110,65 +110,77 @@ function ProductList() {
           onChange={handleInputChange}
         />
       </div>
-      <List>
-        {products
-          .filter(
-            (product) =>
-              product.title?.toLowerCase().startsWith(query.toLowerCase()) &&
-              product.category?.toLowerCase().startsWith(category.toLowerCase())
-          )
+      <Box
+        sx={{
+          borderTop: 1,
+          borderBottom: 1,
+          borderLeft: 1,
+          borderRight: 1,
+          borderColor: '#e5e5e5',
+        }}
+      >
+        <List>
+          {products
+            .filter(
+              (product) =>
+                product.title?.toLowerCase().startsWith(query.toLowerCase()) &&
+                product.category
+                  ?.toLowerCase()
+                  .startsWith(category.toLowerCase())
+            )
 
-          .map((product) => (
-            <ListItem key={product.id} alignItems="flex-start" divider>
-              <ListItemAvatar>
-                <a href={product.image}>
-                  <Avatar alt={product.title} src={product.image} />
-                </a>
-              </ListItemAvatar>
-              <ListItemText
-                primary={
-                  <span className="title block bold ">
-                    {' '}
-                    <Link to={`product/${product.id}`}>
+            .map((product) => (
+              <ListItem key={product.id} alignItems="flex-start" divider>
+                <ListItemAvatar>
+                  <a href={product.image}>
+                    <Avatar alt={product.title} src={product.image} />
+                  </a>
+                </ListItemAvatar>
+                <ListItemText
+                  primary={
+                    <span className="title block bold ">
                       {' '}
-                      {product.title}{' '}
-                    </Link>{' '}
-                  </span>
-                }
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      sx={{ display: 'inline' }}
-                      component="span"
-                      variant="body2"
-                      color="text.primary"
-                    >
-                      {product.category}
-                    </Typography>
-                    <div className="product-price bold">
-                      {' '}
-                      BDT {product.price}
-                    </div>
-                  </React.Fragment>
-                }
-              />
-              <span className="product-quantity bold">
-                {' '}
-                {product.quantityInStock}{' '}
-              </span>
-              <IconButton
-                color="primary"
-                onClick={() => {
-                  handleAddItemToCart(product);
-                }}
-                disabled={!product.quantityInStock}
-              >
-                {' '}
-                <AddIcon />{' '}
-              </IconButton>
-            </ListItem>
-          ))}
-      </List>
+                      <Link to={`product/${product.id}`}>
+                        {' '}
+                        {product.title}{' '}
+                      </Link>{' '}
+                    </span>
+                  }
+                  secondary={
+                    <React.Fragment>
+                      <Typography
+                        sx={{ display: 'inline' }}
+                        component="span"
+                        variant="body2"
+                        color="text.primary"
+                      >
+                        {product.category}
+                      </Typography>
+                      <div className="product-price bold">
+                        {' '}
+                        BDT {product.price}
+                      </div>
+                    </React.Fragment>
+                  }
+                />
+                <span className="product-quantity bold">
+                  {' '}
+                  {product.quantityInStock}{' '}
+                </span>
+                <IconButton
+                  color="primary"
+                  onClick={() => {
+                    handleAddItemToCart(product);
+                  }}
+                  disabled={!product.quantityInStock}
+                >
+                  {' '}
+                  <AddIcon />{' '}
+                </IconButton>
+              </ListItem>
+            ))}
+        </List>
+      </Box>
     </div>
   );
 }
