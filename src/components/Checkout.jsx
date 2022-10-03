@@ -81,7 +81,7 @@ export default function Checkout() {
           <span className="bold">
             {' '}
             {' ' +
-              ' ' +
+              '৳ ' +
               cart.reduce(
                 (prevValue, item) => prevValue + item.price * item.quantity,
                 0

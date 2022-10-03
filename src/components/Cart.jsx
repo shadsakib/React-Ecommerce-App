@@ -65,34 +65,36 @@ function Cart() {
             {' '}
             {item.title}{' '}
           </span>
-          <IconButton
-            onClick={() => {
-              handleQuantityChange(item.id, -1);
-            }}
-            color="primary"
-          >
-            {' '}
-            <RemoveCircleIcon />{' '}
-          </IconButton>
-          <span> {item.quantity} </span>
-          <IconButton
-            onClick={() => {
-              handleQuantityChange(item.id, 1);
-            }}
-            color="primary"
-          >
-            {' '}
-            <AddCircleIcon />{' '}
-          </IconButton>
-          <IconButton
-            color="error"
-            onClick={() => {
-              handleRemoveFromCart(item.id);
-            }}
-          >
-            {' '}
-            <CancelIcon />{' '}
-          </IconButton>
+          <div>
+            <IconButton
+              onClick={() => {
+                handleQuantityChange(item.id, -1);
+              }}
+              color="primary"
+            >
+              {' '}
+              <RemoveCircleIcon />{' '}
+            </IconButton>
+            <span> {item.quantity} </span>
+            <IconButton
+              onClick={() => {
+                handleQuantityChange(item.id, 1);
+              }}
+              color="primary"
+            >
+              {' '}
+              <AddCircleIcon />{' '}
+            </IconButton>
+            <IconButton
+              color="error"
+              onClick={() => {
+                handleRemoveFromCart(item.id);
+              }}
+            >
+              {' '}
+              <CancelIcon />{' '}
+            </IconButton>
+          </div>
         </div>
       ))}
       <div style={{ textAlign: 'center', marginTop: '15px' }}>
@@ -106,12 +108,13 @@ function Cart() {
 
         <div className="bold totals"> Subtotal </div>
         <div className="bold grey totals">
-          BDT
-          {' ' +
-            cart.reduce(
-              (prevValue, item) => prevValue + item.price * item.quantity,
-              0
-            )}
+          {'৳ ' +
+            cart
+              .reduce(
+                (prevValue, item) => prevValue + item.price * item.quantity,
+                0
+              )
+              .toFixed(2)}
         </div>
       </div>
       {!currentRoute.endsWith('checkout') ? (

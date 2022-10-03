@@ -158,7 +158,7 @@ function ProductList() {
                       </Typography>
                       <div className="product-price bold">
                         {' '}
-                        BDT {product.price}
+                        ৳ {product.price}
                       </div>
                     </React.Fragment>
                   }

@@ -35,7 +35,7 @@ function ProductView() {
       <h1> {product.title} </h1>
       <div className="product-cont">
         <img width="300" height="400" alt={product.title} src={product.image} />
-        <div className="price"> Tk {product.price} </div>
+        <div className="price"> ৳ {product.price} </div>
         <Button
           variant="contained"
           color={product.quantityInStock ? 'primary' : 'warning'}
